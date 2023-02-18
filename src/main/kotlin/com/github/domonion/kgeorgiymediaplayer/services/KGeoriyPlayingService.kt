@@ -5,7 +5,6 @@ import com.intellij.notification.NotificationType
 import com.intellij.openapi.Disposable
 import com.intellij.openapi.application.invokeLater
 import com.intellij.openapi.project.Project
-import com.intellij.util.io.exists
 import com.wuyr.intellijmediaplayer.actions.ControllerAction
 import com.wuyr.intellijmediaplayer.components.Controller
 import com.wuyr.intellijmediaplayer.media.MediaPlayer
@@ -16,6 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger
 import java.util.concurrent.locks.ReentrantLock
 import javax.swing.JFrame
 import kotlin.io.path.absolutePathString
+import kotlin.io.path.exists
 import kotlin.io.path.extension
 import kotlin.io.path.outputStream
 
