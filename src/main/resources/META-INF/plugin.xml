@@ -1,18 +1,63 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.domonion.kgeorgiymediaplayer</id>
-    <name>IntelliJ Platform Plugin kgeorgiy-media-player</name>
+    <name>KGeorgiy Media Player</name>
     <vendor>domonion</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.domonion.kgeorgiymediaplayer.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.domonion.kgeorgiymediaplayer.services.MyProjectService"/>
+        <notificationGroup id="KGeorgiy Notification group"
+                            displayType="BALLOON"/>
+        <projectService
+                serviceImplementation="com.github.domonion.kgeorgiymediaplayer.services.KGeorgiyPlayingService"/>
     </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.domonion.kgeorgiymediaplayer.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
+    <projectListeners>
+        <listener class="com.github.domonion.kgeorgiymediaplayer.listeners.KGeorgiyBuildTaskListener"
+                  topic="com.intellij.task.ProjectTaskListener"/>
+        <listener class="com.github.domonion.kgeorgiymediaplayer.listeners.KGeorgiyBuildTaskListener"
+                  topic="com.intellij.execution.ExecutionListener"/>
+    </projectListeners>
+
+
+    <actions>
+        <group id="intellij_media_player"
+               text="Player"
+               description="Media player">
+            <action id="com.wuyr.intellijmediaplayer.actions.OpenAction"
+                    class="com.wuyr.intellijmediaplayer.actions.OpenAction"
+                    icon="Icons.open"
+                    text="Open Video from Path or URL"
+                    description="Open a video from local file path or URL">
+            </action>
+            <action id="com.wuyr.intellijmediaplayer.actions.StopAction"
+                    class="com.wuyr.intellijmediaplayer.actions.StopAction"
+                    icon="Icons.stop"
+                    text="Stop Play Video"
+                    description="Stop play video">
+                <keyboard-shortcut keymap="$default" first-keystroke="alt x"/>
+            </action>
+            <separator/>
+            <action id="com.wuyr.intellijmediaplayer.actions.TransparencyAction"
+                    class="com.wuyr.intellijmediaplayer.actions.TransparencyAction"
+                    icon="Icons.transparency"
+                    text="Video Transparency"
+                    description="Modify video transparency">
+            </action>
+            <action id="com.wuyr.intellijmediaplayer.actions.ControllerAction"
+                    class="com.wuyr.intellijmediaplayer.actions.ControllerAction"
+                    icon="Icons.controller"
+                    text="Show Controller"
+                    description="Hide media controller">
+            </action>
+            <action id="com.wuyr.intellijmediaplayer.actions.MuteAction"
+                    class="com.wuyr.intellijmediaplayer.actions.MuteAction"
+                    icon="Icons.voiced"
+                    text="Switch to Mute"
+                    description="Switch mute or voiced">
+            </action>
+            <add-to-group group-id="MainMenu" anchor="last"/>
+        </group>
+    </actions>
 </idea-plugin>
