@@ -10,13 +10,15 @@ From ITMO KT with love.
 1. Locate your current IDEA `.vmoptions` - [here](https://www.jetbrains.com/help/idea/tuning-the-ide.html#locate-jvm-options-file).
 2. Add `-Dkgeorgiy.path=%some_path%`
 
-## How to build
+## How to build plugin
+
+Go to `gradle.properties`, set `platformVersion` for IDEA version you use.
 
 Use JDK 17 for project. Either `File > Project Structure` or `JAVA_HOME`. 
 
 Build plugin: `./gradlew buildPlugin`.
 
-Install from sources: `/build/distributions`
+`File > Settings > PLugins > Gear icon > Install from disk` - `%repo%/build/distributions`
 
 **!!IMPORTANT!!**: plugin is ~900mb. This is because I don't know minimal set of libraries for FFmpeg and JavaCV,
 and so I bundled _all_. 
