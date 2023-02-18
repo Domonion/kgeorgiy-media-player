@@ -3,6 +3,7 @@ package com.github.domonion.kgeorgiymediaplayer.services
 import com.intellij.notification.NotificationGroupManager
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.Disposable
+import com.intellij.openapi.application.invokeLater
 import com.intellij.openapi.project.Project
 import com.intellij.util.io.exists
 import com.wuyr.intellijmediaplayer.actions.ControllerAction
@@ -45,11 +46,11 @@ class KGeorgiyPlayingService(val project: Project) : Disposable {
             .createNotification(message, NotificationType.WARNING).notify(project)
     }
 
-    fun playKGeorgiy() {
+    fun playKGeorgiy() = invokeLater {
         if (atomicInt.compareAndSet(0, 1)) {
             try {
                 if (MediaPlayer.isPlaying)
-                    return
+                    return@invokeLater
 
                 if (kGeorgiyUnarchived != prop) {
                     notifyWarn("No valid .mp4 KGeorgiy in -Dkgeorgiy.path=$prop property, switching to default")
