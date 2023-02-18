@@ -21,8 +21,6 @@ dependencies {
     implementation("org.bytedeco:ffmpeg:5.1.2-1.5.8")
     implementation("org.bytedeco:javacv:1.5.8")
     implementation("org.bytedeco:ffmpeg-platform:5.1.2-1.5.8")
-    implementation("org.bytedeco:javacpp-platform:1.5.8")
-    implementation("org.bytedeco:javacv-platform:1.5.8")
 }
 
 // Set the JVM language level used to build the project. Use Java 11 for 2020.3+, and Java 17 for 2022.2+.
