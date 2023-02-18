@@ -18,5 +18,5 @@ Build plugin: `./gradlew buildPlugin`.
 
 Install from sources: `/build/distributions`
 
-**!!IMPORTANT!!**: plugin is ~900mb. This is because I don't minimal set of libraries for FFmpeg and JavaCV,
+**!!IMPORTANT!!**: plugin is ~900mb. This is because I don't know minimal set of libraries for FFmpeg and JavaCV,
 and so I bundled _all_. 
