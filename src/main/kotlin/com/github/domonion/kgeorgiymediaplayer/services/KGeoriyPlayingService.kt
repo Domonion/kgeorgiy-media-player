@@ -27,8 +27,8 @@ class KGeorgiyPlayingService(val project: Project) : Disposable {
                 prop
             } else throw Exception()
         } catch (ignored: Throwable) {
-            kotlin.io.path.createTempFile(suffix = "mp4").apply {
-                outputStream().use { pathStream ->
+            kotlin.io.path.createTempFile(suffix = "mp4").also {
+                it.outputStream().use { pathStream ->
                     this.javaClass.classLoader.getResourceAsStream("kgeorgiy_vidos.mp4")
                         ?.use { it.transferTo(pathStream) }
                 }
