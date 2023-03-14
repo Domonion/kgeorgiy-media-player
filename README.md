@@ -19,6 +19,3 @@ Use JDK 17 for project. Either `File > Project Structure` or `JAVA_HOME`.
 Build plugin: `./gradlew buildPlugin`.
 
 `File > Settings > PLugins > Gear icon > Install from disk` - `%repo%/build/distributions`
-
-**!!IMPORTANT!!**: plugin is ~900mb. This is because I don't know minimal set of libraries for FFmpeg and JavaCV,
-and so I bundled _all_. 
